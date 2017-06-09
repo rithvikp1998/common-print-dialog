@@ -6,6 +6,7 @@ ColumnLayout {
     property alias lessOptionsButton: lessOptionsButton
 
     property alias cancelMoreOptionsButton: cancelMoreOptionsButton
+    property alias tabButton: tabButton
 
     anchors.fill: parent
 
@@ -31,19 +32,30 @@ ColumnLayout {
         }
 
         Page {
-            Label {
+            /*Label {
                 text: qsTr("Jobs")
                 anchors.centerIn: parent
+            }*/
+
+            MoreOptionsJobs {
+                y: 35
+                height: parent.height - 80
             }
         }
 
         Page {
-            Label {
+            /*Label {
                 text: qsTr("Quality")
                 anchors.centerIn: parent
+            }*/
+
+            MoreOptionsAdvanced {
+                y: 35
+                height: parent.height - 80
             }
         }
     }
+
     TabBar {
         id: tabBar
         currentIndex: swipeView.currentIndex
@@ -53,6 +65,7 @@ ColumnLayout {
         Layout.fillHeight: true
 
         TabButton {
+            id: tabButton
             text: qsTr("General")
             height: 32
         }
@@ -69,7 +82,7 @@ ColumnLayout {
             height: 32
         }
         TabButton {
-            text: qsTr("Quality")
+            text: qsTr("Advanced")
             height: 32
         }
     }
@@ -100,4 +113,5 @@ ColumnLayout {
             }
         }
     }
+
 }
