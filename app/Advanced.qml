@@ -38,7 +38,7 @@ Item {
 
             ComboBox {
                 Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
-                model: ["Printer Setting", "150", "300", "600"] // Some problem on getting 'supportedResolutions' hence currently static
+                model: supportedResolutions
                 font.pixelSize: Style.textSize
             }
 

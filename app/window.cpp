@@ -129,13 +129,13 @@ void _Window::setAdvancedOptions(){
     }
 
     /****** Fix this ***********/
-    /*QString optionName = "printer-resolution";
+    QString optionName = "printer-resolution";
     QByteArray option_name_ba = optionName.toLocal8Bit();
     char *option_name = option_name_ba.data();
 
     Option *resolutionOption = get_Option(p, option_name);
     for(int i=0; i<resolutionOption->num_supported; i++)
-        supportedResolutions.append(resolutionOption->supported_values[i]);*/
+        supportedResolutions.append(resolutionOption->supported_values[i]);
 
     root->rootObject->setProperty("supportedResolutions", supportedResolutions);
 }
