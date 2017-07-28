@@ -36,6 +36,8 @@ public:
     Preview *preview;
     Controls *controls;
     QGridLayout *masterLayout;
+    QStringList jobsList;
+    QStringList supportedResolutions;
 
     _Window(QPrinter* printer, QWidget* parent = Q_NULLPTR);
     void init_backend();
@@ -49,6 +51,8 @@ public:
     void updateAllOptions(const QString &printer) {}
     gpointer parse_commands(gpointer user_data);
     gpointer ui_add_printer(gpointer user_data);
+    void setJobsList();
+    void setAdvancedOptions();
 
 public Q_SLOTS:
     void tabBarIndexChanged(qint32 index);

@@ -1,5 +1,8 @@
 #include "window.h"
 
+extern "C"  {
+    #include "../backends/cups/src/frontend_helper.h"
+}
 _Window *_window;
 
 _Window::_Window(QPrinter *printer, QWidget *parent) :
@@ -90,6 +93,51 @@ void _Window::tabBarIndexChanged(qint32 index) {
 
 void _Window::swipeViewIndexChanged(qint32 index) {
     tabs->rootObject->setProperty("index", index);
+    if(index == 3)
+        setJobsList();
+    if(index == 4)
+        setAdvancedOptions();
+}
+
+void _Window::setJobsList(){
+    jobsList.clear();
+    Job *j;
+    int x = get_all_jobs(f, &j, 0); // Change '0' to  activeOnly parameter
+    for(int i=0; i<x; i++){
+        QString printerName = j[i].printer;
+        QString location = j[i].user;
+        QString status = j[i].state;
+        jobsList.append(printerName + "%" + location + "%" + status);
+    }
+
+    root->rootObject->setProperty("jobsList", jobsList);
+}
+
+void _Window::setAdvancedOptions(){
+    QString printerName = "Xerox"; // Get printer name from the UI
+    QByteArray printer_name_ba = printerName.toLocal8Bit();
+    char *printer_name = printer_name_ba.data();
+
+    QString backendName = "CUPS";
+    QByteArray backend_name_ba = backendName.toLocal8Bit();
+    char *backend_name = backend_name_ba.data();
+
+    PrinterObj *p = find_PrinterObj(f, printer_name, backend_name);
+    if(!p){
+        qCritical("Printer %s not found", printer_name);
+        return;
+    }
+
+    /****** Fix this ***********/
+    /*QString optionName = "printer-resolution";
+    QByteArray option_name_ba = optionName.toLocal8Bit();
+    char *option_name = option_name_ba.data();
+
+    Option *resolutionOption = get_Option(p, option_name);
+    for(int i=0; i<resolutionOption->num_supported; i++)
+        supportedResolutions.append(resolutionOption->supported_values[i]);*/
+
+    root->rootObject->setProperty("supportedResolutions", supportedResolutions);
 }
 
 void _Window::cancelButtonClicked() {
@@ -149,7 +197,7 @@ gpointer _Window::parse_commands(gpointer user_data) {
     else if (cmd->command.compare("get-all-options") == 0) {
         char printerName[300];
         strcpy(printerName, cmd->arg1.c_str());
-        get_all_printer_options(_window->f, printerName);
+        get_all_printer_options(_window->f, printerName, "CUPS");
     }
 }
 

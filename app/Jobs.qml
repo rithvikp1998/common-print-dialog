@@ -15,118 +15,6 @@ ColumnLayout{
 
     Layout.fillWidth: true
 
-    ListModel{
-        id: jobs_model
-
-        ListElement{
-            printer: "Canon Pixma"
-            location: "Office Desk"
-            status: "Completed"
-        }
-
-        ListElement{
-            printer: "HP Laser Jet"
-            location: "Home"
-            status: "Running"
-        }
-
-        ListElement{
-            printer: "Xerox"
-            location: "Office Reception"
-            status: "Pending"
-        }
-
-        ListElement{
-            printer: "Xerox"
-            location: "Office Reception"
-            status: "Pending"
-        }
-
-        ListElement{
-            printer: "Xerox"
-            location: "Office Reception"
-            status: "Pending"
-        }
-
-        ListElement{
-            printer: "Xerox"
-            location: "Office Reception"
-            status: "Pending"
-        }
-
-        ListElement{
-            printer: "Xerox"
-            location: "Office Reception"
-            status: "Pending"
-        }
-
-        ListElement{
-            printer: "Xerox"
-            location: "Office Reception"
-            status: "Pending"
-        }
-
-        ListElement{
-            printer: "Xerox"
-            location: "Office Reception"
-            status: "Pending"
-        }
-
-        ListElement{
-            printer: "Xerox"
-            location: "Office Reception"
-            status: "Pending"
-        }
-
-        ListElement{
-            printer: "Xerox"
-            location: "Office Reception"
-            status: "Pending"
-        }
-
-        ListElement{
-            printer: "Xerox1"
-            location: "Office Reception"
-            status: "Pending"
-        }
-
-        ListElement{
-            printer: "Xerox"
-            location: "Office Reception"
-            status: "Pending"
-        }
-
-        ListElement{
-            printer: "Xerox"
-            location: "Office Reception"
-            status: "Pending"
-        }
-
-        ListElement{
-            printer: "Xerox"
-            location: "Office Reception"
-            status: "Pending"
-        }
-
-        ListElement{
-            printer: "Xerox"
-            location: "Office Reception"
-            status: "Pending"
-        }
-
-        ListElement{
-            printer: "Xerox"
-            location: "Office Reception"
-            status: "Pending"
-        }
-
-        ListElement{
-            printer: "Xerox"
-            location: "Office Reception"
-            status: "Pending"
-        }
-    }
-
     Menu { //Should this menu be for every job or is there some other way?
         id: menu
         width: 108
@@ -137,41 +25,93 @@ ColumnLayout{
         MenuItem{ text: qsTr("Repeat"); font.pixelSize: Style.textSize; height: 24; }
     }
 
+    Rectangle {
+        width: parent.width
+        height: location_heading.contentHeight // Since "Location" is the biggest word in this row,
+                                               // it will be the first to get wrapped
+        Text {
+            x: 20
+            y: 10
+            width: parent.width/3 - 20
+            text: "Printer"
+            font.bold: true
+            wrapMode: Text.Wrap
+        }
 
-    TableView {
+        Text {
+            id: location_heading
+            x: parent.width/3 + 20
+            y: 10
+            width: parent.width/3 - 20
+            text: "Location"
+            font.bold: true
+            wrapMode: Text.Wrap
+        }
+
+        Text {
+            x: 2*parent.width/3 + 20
+            y: 10
+            width: parent.width/3 - 20
+            text: "Status"
+            font.bold: true
+            wrapMode: Text.Wrap
+        }
+    }
+
+    ListView {
         id: jobs_view
-        currentRow: 1
-        highlightOnFocus: true
-        Layout.minimumHeight: parent.height / 2
-        sortIndicatorVisible: true
-        Layout.fillWidth: true
-        anchors.top: parent.top
-        MouseArea {
-            anchors.fill: parent
-            acceptedButtons: Qt.RightButton
-            hoverEnabled: true
-            onClicked: {
-                menu.x = mouseX
-                menu.y = mouseY
-                menu.open()
+        width: parent.width
+        height: parent.height - 200
+        model: jobsList
+        y: location_heading.contentHeight + 20
+
+        delegate: Rectangle {
+            width: parent.width
+            height: Math.max(printer_text.contentHeight, location_text.contentHeight, status_text.contentHeight) + 10
+            color: (model.index % 2 == 0) ? "#EEEEEE" : "white"
+            property variant stringList: jobsList[index].split('%')
+
+           MouseArea {
+                anchors.fill: parent
+                acceptedButtons: Qt.RightButton
+                hoverEnabled: true
+
+                onEntered: { parent.color = "#BDBDBD"}
+                onExited:  { parent.color = (model.index % 2 == 0) ? "#EEEEEE" : "white"}
+                onClicked: {
+                    menu.x = mouseX
+                    menu.y = mouseY
+                    menu.open()
+                }
+            }
+
+            Text {
+                id: printer_text
+                x: 20
+                anchors.verticalCenter: parent.verticalCenter
+                width: parent.width/3 - 20
+                text: stringList[0]
+                wrapMode: Text.Wrap
+            }
+
+            Text {
+                id: location_text
+                x: parent.width/3 + 20
+                anchors.verticalCenter: parent.verticalCenter
+                width: parent.width/3 - 20
+                text: stringList[1]
+                wrapMode: Text.Wrap
+            }
+
+            Text {
+                id: status_text
+                x: 2*parent.width/3 + 20
+                anchors.verticalCenter: parent.verticalCenter
+                width: parent.width/3 - 20
+                text: stringList[2]
+                wrapMode: Text.Wrap
             }
         }
-        TableViewColumn {
-            role: "printer"
-            title: qsTr("Printer")
-            width: 210
-        }
-        TableViewColumn {
-            role: "location"
-            title: qsTr("Location")
-            width: 210
-        }
-        TableViewColumn {
-            role: "status"
-            title: qsTr("Status")
-            width: 210
-        }
-        model: jobs_model
     }
 
     RowLayout {

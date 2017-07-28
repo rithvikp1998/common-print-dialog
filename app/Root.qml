@@ -7,6 +7,8 @@ SwipeView {
     id: swipeView
     signal swipeViewIndexChanged(int index)
     property int index: 0
+    property var jobsList: []
+    property var supportedResolutions: []
     currentIndex: index
     onCurrentIndexChanged: swipeViewIndexChanged(swipeView.currentIndex)
 
