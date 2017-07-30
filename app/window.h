@@ -21,11 +21,11 @@ static int remove_printer_callback(char *printer_name);
 static gpointer parse_commands(gpointer user_data, FrontendObj *f);
 void ui_add_printer_aux(gpointer key, gpointer value, gpointer user_data);
 
-typedef struct {
+struct Command{
     std::string command;
     std::string arg1;
     std::string arg2;
-} Command;
+};
 
 class _Window : public QWidget {
     Q_OBJECT
