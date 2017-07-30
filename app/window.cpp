@@ -162,11 +162,11 @@ gpointer _Window::ui_add_printer(gpointer user_data) {
     Command cmd;
     if (*enabled) {
         cmd.command = "unhide-remote-cups";
-        parse_commands(&cmd);
+        parse_commands(&cmd, f);
     }
     else {
         cmd.command = "hide-remote-cups";
-        parse_commands(&cmd);
+        parse_commands(&cmd, f);
     }
     clearPrinters();
     g_hash_table_foreach(f->printer, ui_add_printer_aux, NULL);
@@ -188,7 +188,7 @@ void _Window::addPrinter(const char *printer) {
         qDebug() << "generalObject Not Found";
 }
 
-gpointer _Window::parse_commands(gpointer user_data) {
+static gpointer parse_commands(gpointer user_data, FrontendObj *f) {
     Command* cmd = (Command*)user_data;
     if (cmd->command.compare("hide-remote-cups") == 0)
         hide_remote_cups_printers(f);
