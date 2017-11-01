@@ -12,7 +12,7 @@ unix {
     headerfiles.files = $$PWD/*.h
     INSTALLS += target headerfiles
     CONFIG += link_pkgconfig
-    PKGCONFIG += CPDFrontend gio-unix-2.0 glib-2.0 gobject-2.0
+    PKGCONFIG += gio-unix-2.0 glib-2.0 gobject-2.0 cpdb-libs-frontend
 }
 
 SOURCES += \
@@ -28,3 +28,5 @@ HEADERS += \
 RESOURCES += qml.qrc
 DEFINES += QCPDIALOG_LIBRARY
 DEFINES += QT_DEPRECATED_WARNINGS
+
+INCLUDEPATH += /usr/local/include/

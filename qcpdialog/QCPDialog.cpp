@@ -28,7 +28,8 @@
 #include <QProcess>
 #include <QUuid>
 extern "C" {
-#include <CPDFrontend.h>
+#include <cpdb-libs-frontend.h>
+#include <cpd-interface-headers/frontend_helper.h>
 }
 
 /*!
@@ -452,7 +453,7 @@ void QCPDialog::setDuplexOption(const QString &duplexOption)
 void QCPDialog::refreshJobs()
 {
     Job *job;
-    bool activeJobsOnly = true;
+    bool activeJobsOnly = false;
     int jobsCount = get_all_jobs(f, &job, activeJobsOnly);
 
     QObject *obj = root->rootObject->findChild<QObject *>("jobsObject");
