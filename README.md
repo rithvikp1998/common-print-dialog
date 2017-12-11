@@ -9,11 +9,11 @@
 - qml-module-qtquick-dialogs
 - qml-module-qt-labs-settings
 - qml-module-qt-labs-folderlistmodel
-- [Frontend and Backend libraries](https://github.com/NilanjanaLodh/OpenPrinting_CPD_Libraries)
-- [CUPS Backend](https://github.com/NilanjanaLodh/OpenPrinting_CUPS_Backend)
-- [GCP Backend](https://github.com/dracarys09/gcp-backend)
+- [Frontend and Backend Communication libraries](https://github.com/OpenPrinting/cpdb-libs)
+- [CUPS CPD-Backend](https://github.com/OpenPrinting/cpdb-backend-cups)
+- [GCP CPD-Backend](https://github.com/OpenPrinting/cpdb-backend-gcp)
 
-On Ubuntu, run this command to install all dependencies
+On Ubuntu (17.04 or higher), run this command to install all dependencies
 ```
 sudo apt -y install qt5-qmake qtdeclarative5-dev qml-module-qtquick-controls qml-module-qtquick-controls2 qml-module-qtquick-templates2 qml-module-qtquick-dialogs qml-module-qt-labs-settings qml-module-qt-labs-folderlistmodel
 ```
@@ -31,6 +31,12 @@ sudo make install
 ```
 
 ## Using the library
-https://github.com/anshulgupta0803/printTest
+Build and run examples/test_application
 
-This is a Hello World print application which uses the Print Dialog library.
+```
+cd examples/test_application
+mkdir build; cd build
+make all
+./printTest
+
+```
