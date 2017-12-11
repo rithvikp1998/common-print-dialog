@@ -76,10 +76,7 @@ public:
 
     QString information();
 
-    int exec() override
-    {
-        return QDialog::exec();
-    }
+    int exec() override;
 
 private Q_SLOTS:
     void addPrinter(char *printer_name, char *printer_id, char *backend_name);
