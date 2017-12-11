@@ -2,6 +2,7 @@ TEMPLATE = subdirs
 
 SUBDIRS += \
     qcpdialog \
-    helper
+    helper \
+    examples/test_application
 
 CONFIG += ordered
