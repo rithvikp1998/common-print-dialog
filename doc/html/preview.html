@@ -42,8 +42,15 @@
 <a name="public-functions"></a>
 <h2 id="public-functions">Public Functions</h2>
 <div class="table"><table class="alignedsummary">
-<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="preview.html#Preview">Preview</a></b>(QPrinter *<i> _printer</i>, QWidget *<i> parent</i> = Q_NULLPTR)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="preview.html#Preview">Preview</a></b>(QPrinter *<i> _printer</i>, QString<i> uniqueID</i>, QWidget *<i> parent</i> = Q_NULLPTR)</td></tr>
 <tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="preview.html#dtor.Preview">~Preview</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="preview.html#printfile">printfile</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="preview.html#resize">resize</a></b>(const QRect &amp;<i> rect</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="preview.html#setCollateCopies">setCollateCopies</a></b>(bool<i> enabled</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="preview.html#setNumCopies">setNumCopies</a></b>(int<i> copies</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="preview.html#setOrientation">setOrientation</a></b>(const QString &amp;<i> orientation</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="preview.html#setPageSize">setPageSize</a></b>(QString<i> name</i>, qreal<i> width</i>, qreal<i> height</i>, QString<i> unit</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="preview.html#setPrintRange">setPrintRange</a></b>(QString<i> pageRange</i>)</td></tr>
 </table></div>
 <a name="public-slots"></a>
 <h2 id="public-slots">Public Slots</h2>
@@ -62,9 +69,8 @@
 <!-- @@@Preview -->
 <div class="func">
 <h2>Member Function Documentation</h2>
-<!-- $$$Preview[overload1]$$$PreviewQPrinter*QWidget* -->
-<h3 class="fn" id="Preview"><a name="Preview"></a>Preview::<span class="name">Preview</span>(<span class="type">QPrinter</span> *<i> _printer</i>, <span class="type">QWidget</span> *<i> parent</i> = Q_NULLPTR)</h3>
-<p>Constructs Preview objects with <i>parent</i> as the parent widget and <i>_printer</i> as the printer. The <i>_printer</i> is used further to change the job options that get reflected in the preview.</p>
+<!-- $$$Preview[overload1]$$$PreviewQPrinter*QStringQWidget* -->
+<h3 class="fn" id="Preview"><a name="Preview"></a>Preview::<span class="name">Preview</span>(<span class="type">QPrinter</span> *<i> _printer</i>, <span class="type">QString</span><i> uniqueID</i>, <span class="type">QWidget</span> *<i> parent</i> = Q_NULLPTR)</h3>
 <!-- @@@Preview -->
 <!-- $$$~Preview[overload1]$$$~Preview -->
 <h3 class="fn" id="dtor.Preview"><a name="dtor.Preview"></a>Preview::<span class="name">~Preview</span>()</h3>
@@ -73,6 +79,27 @@
 <h3 class="fn" id="print"><a name="print"></a><code>[slot] </code><span class="type">void</span> Preview::<span class="name">print</span>(<span class="type">QPrinter</span> *<i> printer</i>)</h3>
 <p>The function acts as a slot for the paintRequested signal emitted by QPrintPreviewWidget. The function uses poppler and <i>printer</i> settings to generated and paint the image.</p>
 <!-- @@@print -->
+<!-- $$$printfile[overload1]$$$printfile -->
+<h3 class="fn" id="printfile"><a name="printfile"></a><span class="type">void</span> Preview::<span class="name">printfile</span>()</h3>
+<!-- @@@printfile -->
+<!-- $$$resize[overload1]$$$resizeconstQRect& -->
+<h3 class="fn" id="resize"><a name="resize"></a><span class="type">void</span> Preview::<span class="name">resize</span>(const <span class="type">QRect</span> &amp;<i> rect</i>)</h3>
+<!-- @@@resize -->
+<!-- $$$setCollateCopies[overload1]$$$setCollateCopiesbool -->
+<h3 class="fn" id="setCollateCopies"><a name="setCollateCopies"></a><span class="type">void</span> Preview::<span class="name">setCollateCopies</span>(<span class="type">bool</span><i> enabled</i>)</h3>
+<!-- @@@setCollateCopies -->
+<!-- $$$setNumCopies[overload1]$$$setNumCopiesint -->
+<h3 class="fn" id="setNumCopies"><a name="setNumCopies"></a><span class="type">void</span> Preview::<span class="name">setNumCopies</span>(<span class="type">int</span><i> copies</i>)</h3>
+<!-- @@@setNumCopies -->
+<!-- $$$setOrientation[overload1]$$$setOrientationconstQString& -->
+<h3 class="fn" id="setOrientation"><a name="setOrientation"></a><span class="type">void</span> Preview::<span class="name">setOrientation</span>(const <span class="type">QString</span> &amp;<i> orientation</i>)</h3>
+<!-- @@@setOrientation -->
+<!-- $$$setPageSize[overload1]$$$setPageSizeQStringqrealqrealQString -->
+<h3 class="fn" id="setPageSize"><a name="setPageSize"></a><span class="type">void</span> Preview::<span class="name">setPageSize</span>(<span class="type">QString</span><i> name</i>, <span class="type">qreal</span><i> width</i>, <span class="type">qreal</span><i> height</i>, <span class="type">QString</span><i> unit</i>)</h3>
+<!-- @@@setPageSize -->
+<!-- $$$setPrintRange[overload1]$$$setPrintRangeQString -->
+<h3 class="fn" id="setPrintRange"><a name="setPrintRange"></a><span class="type">void</span> Preview::<span class="name">setPrintRange</span>(<span class="type">QString</span><i> pageRange</i>)</h3>
+<!-- @@@setPrintRange -->
 <!-- $$$setZoom[overload1]$$$setZoomqreal -->
 <h3 class="fn" id="setZoom"><a name="setZoom"></a><code>[slot] </code><span class="type">void</span> Preview::<span class="name">setZoom</span>(<span class="type">qreal</span><i> zoomFactor</i>)</h3>
 <p>This function acts as a slot for the zoomSliderValueChanged signal emitted from pages/preview_toolbar.qml and sets the size of the page shown in the preview according to the <i>zoomFactor</i>.</p>

@@ -28,7 +28,6 @@
 <h3><a name="toc">Contents</a></h3>
 <ul>
 <li class="level1"><a href="#public-functions">Public Functions</a></li>
-<li class="level1"><a href="#public-slots">Public Slots</a></li>
 <li class="level1"><a href="#details">Detailed Description</a></li>
 </ul>
 </div>
@@ -43,26 +42,23 @@
 <h2 id="public-functions">Public Functions</h2>
 <div class="table"><table class="alignedsummary">
 <tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="qcpdialog.html#QCPDialog">QCPDialog</a></b>(QPrinter *<i> printer</i>, QWidget *<i> parent</i> = Q_NULLPTR)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="qcpdialog.html#dtor.QCPDialog">~QCPDialog</a></b>()</td></tr>
 <tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="qcpdialog.html#addMaximumPrintCopies">addMaximumPrintCopies</a></b>(char *<i> _copies</i>)</td></tr>
-<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="qcpdialog.html#addPagesPerSize">addPagesPerSize</a></b>(char *<i> pages</i>)</td></tr>
-<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="qcpdialog.html#addPrinter">addPrinter</a></b>(char *<i> printer</i>, char *<i> backend</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="qcpdialog.html#clearPagesPerSideModel">clearPagesPerSideModel</a></b>()</td></tr>
 <tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="qcpdialog.html#clearPaperSizeModel">clearPaperSizeModel</a></b>()</td></tr>
 <tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="qcpdialog.html#clearPrinters">clearPrinters</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="qcpdialog.html#clearResolutionModel">clearResolutionModel</a></b>()</td></tr>
 <tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="qcpdialog.html#clearStartJobsModel">clearStartJobsModel</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="qcpdialog.html#clearTwoSidedSwitch">clearTwoSidedSwitch</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="qcpdialog.html#enableTwoSided">enableTwoSided</a></b>(char *<i> option</i>)</td></tr>
 <tr><td class="memItemLeft rightAlign topAlign"> int </td><td class="memItemRight bottomAlign"><b><a href="qcpdialog.html#exec">exec</a></b>()</td></tr>
 <tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="qcpdialog.html#information">information</a></b>()</td></tr>
 <tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="qcpdialog.html#init_backend">init_backend</a></b>()</td></tr>
-<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="qcpdialog.html#updatePaperSizeModel">updatePaperSizeModel</a></b>(char *<i> media</i>, int<i> isDefault</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="qcpdialog.html#resizeEvent">resizeEvent</a></b>(QResizeEvent *<i> event</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="qcpdialog.html#updatePagesPerSideModel">updatePagesPerSideModel</a></b>(char *<i> pages</i>, int<i> isDefault</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="qcpdialog.html#updatePaperSizeModel">updatePaperSizeModel</a></b>(const char *<i> name</i>, char *<i> pwg_name</i>, int<i> isDefault</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="qcpdialog.html#updateResolutionModel">updateResolutionModel</a></b>(char *<i> resolution</i>, int<i> isDefault</i>)</td></tr>
 <tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="qcpdialog.html#updateStartJobsModel">updateStartJobsModel</a></b>(char *<i> startJobOption</i>)</td></tr>
-</table></div>
-<a name="public-slots"></a>
-<h2 id="public-slots">Public Slots</h2>
-<div class="table"><table class="alignedsummary">
-<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="qcpdialog.html#cancelButtonClicked">cancelButtonClicked</a></b>()</td></tr>
-<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="qcpdialog.html#newPrinterSelected">newPrinterSelected</a></b>(const QString &amp;<i> printer</i>)</td></tr>
-<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="qcpdialog.html#remotePrintersToggled">remotePrintersToggled</a></b>(const QString &amp;<i> enabled</i>)</td></tr>
-<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="qcpdialog.html#swipeViewIndexChanged">swipeViewIndexChanged</a></b>(qint32<i> index</i>)</td></tr>
-<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="qcpdialog.html#tabBarIndexChanged">tabBarIndexChanged</a></b>(qint32<i> index</i>)</td></tr>
 </table></div>
 <a name="details"></a>
 <!-- $$$QCPDialog-description -->
@@ -78,21 +74,16 @@
 <h3 class="fn" id="QCPDialog"><a name="QCPDialog"></a>QCPDialog::<span class="name">QCPDialog</span>(<span class="type">QPrinter</span> *<i> printer</i>, <span class="type">QWidget</span> *<i> parent</i> = Q_NULLPTR)</h3>
 <p>Constructs <a href="qcpdialog.html">QCPDialog</a> with <i>parent</i> as the parent widget and <i>printer</i> as the printer. The <i>printer</i> handles all the job options that get reflected in the preview as well as the final job output.</p>
 <!-- @@@QCPDialog -->
+<!-- $$$~QCPDialog[overload1]$$$~QCPDialog -->
+<h3 class="fn" id="dtor.QCPDialog"><a name="dtor.QCPDialog"></a>QCPDialog::<span class="name">~QCPDialog</span>()</h3>
+<!-- @@@~QCPDialog -->
 <!-- $$$addMaximumPrintCopies[overload1]$$$addMaximumPrintCopieschar* -->
 <h3 class="fn" id="addMaximumPrintCopies"><a name="addMaximumPrintCopies"></a><span class="type">void</span> QCPDialog::<span class="name">addMaximumPrintCopies</span>(<span class="type">char</span> *<i> _copies</i>)</h3>
 <p>This function takes the range <i>_copies</i> for the number of copies and sets the maximum value allowed in the dialog.</p>
 <!-- @@@addMaximumPrintCopies -->
-<!-- $$$addPagesPerSize[overload1]$$$addPagesPerSizechar* -->
-<h3 class="fn" id="addPagesPerSize"><a name="addPagesPerSize"></a><span class="type">void</span> QCPDialog::<span class="name">addPagesPerSize</span>(<span class="type">char</span> *<i> pages</i>)</h3>
-<!-- @@@addPagesPerSize -->
-<!-- $$$addPrinter[overload1]$$$addPrinterchar*char* -->
-<h3 class="fn" id="addPrinter"><a name="addPrinter"></a><span class="type">void</span> QCPDialog::<span class="name">addPrinter</span>(<span class="type">char</span> *<i> printer</i>, <span class="type">char</span> *<i> backend</i>)</h3>
-<p>Whenever a new printer with name <i>printer</i> and backend <i>backend</i> is discovered in the backends, this function is called which adds that printer to the UI.</p>
-<!-- @@@addPrinter -->
-<!-- $$$cancelButtonClicked[overload1]$$$cancelButtonClicked -->
-<h3 class="fn" id="cancelButtonClicked"><a name="cancelButtonClicked"></a><code>[slot] </code><span class="type">void</span> QCPDialog::<span class="name">cancelButtonClicked</span>()</h3>
-<p>This function acts as a slot for the signal cancelButtonClicked emitted from the Controls.qml file. The signal is emitted when the user clicks on the &quot;Cancel&quot; Button in the sidebar.</p>
-<!-- @@@cancelButtonClicked -->
+<!-- $$$clearPagesPerSideModel[overload1]$$$clearPagesPerSideModel -->
+<h3 class="fn" id="clearPagesPerSideModel"><a name="clearPagesPerSideModel"></a><span class="type">void</span> QCPDialog::<span class="name">clearPagesPerSideModel</span>()</h3>
+<!-- @@@clearPagesPerSideModel -->
 <!-- $$$clearPaperSizeModel[overload1]$$$clearPaperSizeModel -->
 <h3 class="fn" id="clearPaperSizeModel"><a name="clearPaperSizeModel"></a><span class="type">void</span> QCPDialog::<span class="name">clearPaperSizeModel</span>()</h3>
 <p>This function clears the model paperSizeModel which holds a list of printer-supported media options.</p>
@@ -101,10 +92,19 @@
 <h3 class="fn" id="clearPrinters"><a name="clearPrinters"></a><span class="type">void</span> QCPDialog::<span class="name">clearPrinters</span>()</h3>
 <p>This function clears the list of printers shown in the UI.</p>
 <!-- @@@clearPrinters -->
+<!-- $$$clearResolutionModel[overload1]$$$clearResolutionModel -->
+<h3 class="fn" id="clearResolutionModel"><a name="clearResolutionModel"></a><span class="type">void</span> QCPDialog::<span class="name">clearResolutionModel</span>()</h3>
+<!-- @@@clearResolutionModel -->
 <!-- $$$clearStartJobsModel[overload1]$$$clearStartJobsModel -->
 <h3 class="fn" id="clearStartJobsModel"><a name="clearStartJobsModel"></a><span class="type">void</span> QCPDialog::<span class="name">clearStartJobsModel</span>()</h3>
 <p>This function clears the model startJobModel which holds a list of printer-supported job hold options.</p>
 <!-- @@@clearStartJobsModel -->
+<!-- $$$clearTwoSidedSwitch[overload1]$$$clearTwoSidedSwitch -->
+<h3 class="fn" id="clearTwoSidedSwitch"><a name="clearTwoSidedSwitch"></a><span class="type">void</span> QCPDialog::<span class="name">clearTwoSidedSwitch</span>()</h3>
+<!-- @@@clearTwoSidedSwitch -->
+<!-- $$$enableTwoSided[overload1]$$$enableTwoSidedchar* -->
+<h3 class="fn" id="enableTwoSided"><a name="enableTwoSided"></a><span class="type">void</span> QCPDialog::<span class="name">enableTwoSided</span>(<span class="type">char</span> *<i> option</i>)</h3>
+<!-- @@@enableTwoSided -->
 <!-- $$$exec[overload1]$$$exec -->
 <h3 class="fn" id="exec"><a name="exec"></a><span class="type">int</span> QCPDialog::<span class="name">exec</span>()</h3>
 <!-- @@@exec -->
@@ -116,26 +116,18 @@
 <h3 class="fn" id="init_backend"><a name="init_backend"></a><span class="type">void</span> QCPDialog::<span class="name">init_backend</span>()</h3>
 <p>This function is called whenever a new instance of the dialog is created. This function helps create a new FrontendObj for a new instance of the dialog and connects the FrontendObj to the dbus for further communication.</p>
 <!-- @@@init_backend -->
-<!-- $$$newPrinterSelected[overload1]$$$newPrinterSelectedconstQString& -->
-<h3 class="fn" id="newPrinterSelected"><a name="newPrinterSelected"></a><code>[slot] </code><span class="type">void</span> QCPDialog::<span class="name">newPrinterSelected</span>(const <span class="type">QString</span> &amp;<i> printer</i>)</h3>
-<p>Whenever a new printer with name <i>printer</i> is selected by the User, this function updates all the options shown in the dialog with the options and values supported by the selected printer.</p>
-<!-- @@@newPrinterSelected -->
-<!-- $$$remotePrintersToggled[overload1]$$$remotePrintersToggledconstQString& -->
-<h3 class="fn" id="remotePrintersToggled"><a name="remotePrintersToggled"></a><code>[slot] </code><span class="type">void</span> QCPDialog::<span class="name">remotePrintersToggled</span>(const <span class="type">QString</span> &amp;<i> enabled</i>)</h3>
-<p>When <i>enabled</i> is set to &quot;true&quot;, the dialog shows all printers including remote printers whereas when it is not set to &quot;true&quot;, the dialog hides all the remote printers and shows only the local printers.</p>
-<!-- @@@remotePrintersToggled -->
-<!-- $$$swipeViewIndexChanged[overload1]$$$swipeViewIndexChangedqint32 -->
-<h3 class="fn" id="swipeViewIndexChanged"><a name="swipeViewIndexChanged"></a><code>[slot] </code><span class="type">void</span> QCPDialog::<span class="name">swipeViewIndexChanged</span>(<span class="type">qint32</span><i> index</i>)</h3>
-<p>This function acts as slot for the signal swipeViewIndexChanged which is emitted from Root.qml It sets the property &quot;index&quot; in Root.qml to <i>index</i></p>
-<!-- @@@swipeViewIndexChanged -->
-<!-- $$$tabBarIndexChanged[overload1]$$$tabBarIndexChangedqint32 -->
-<h3 class="fn" id="tabBarIndexChanged"><a name="tabBarIndexChanged"></a><code>[slot] </code><span class="type">void</span> QCPDialog::<span class="name">tabBarIndexChanged</span>(<span class="type">qint32</span><i> index</i>)</h3>
-<p>This function acts as slot for the signal tabBarIndexChanged which is emitted from Tabs.qml It sets the property &quot;index&quot; in Tabs.qml to <i>index</i></p>
-<!-- @@@tabBarIndexChanged -->
-<!-- $$$updatePaperSizeModel[overload1]$$$updatePaperSizeModelchar*int -->
-<h3 class="fn" id="updatePaperSizeModel"><a name="updatePaperSizeModel"></a><span class="type">void</span> QCPDialog::<span class="name">updatePaperSizeModel</span>(<span class="type">char</span> *<i> media</i>, <span class="type">int</span><i> isDefault</i>)</h3>
-<p>Adds a new paper defined by <i>media</i> to the existing model paperSizeModel. The <i>isDefault</i> parameter checks if the given media is to be set as the default for the printer.</p>
+<!-- $$$resizeEvent[overload1]$$$resizeEventQResizeEvent* -->
+<h3 class="fn" id="resizeEvent"><a name="resizeEvent"></a><span class="type">void</span> QCPDialog::<span class="name">resizeEvent</span>(<span class="type">QResizeEvent</span> *<i> event</i>)</h3>
+<!-- @@@resizeEvent -->
+<!-- $$$updatePagesPerSideModel[overload1]$$$updatePagesPerSideModelchar*int -->
+<h3 class="fn" id="updatePagesPerSideModel"><a name="updatePagesPerSideModel"></a><span class="type">void</span> QCPDialog::<span class="name">updatePagesPerSideModel</span>(<span class="type">char</span> *<i> pages</i>, <span class="type">int</span><i> isDefault</i>)</h3>
+<!-- @@@updatePagesPerSideModel -->
+<!-- $$$updatePaperSizeModel[overload1]$$$updatePaperSizeModelconstchar*char*int -->
+<h3 class="fn" id="updatePaperSizeModel"><a name="updatePaperSizeModel"></a><span class="type">void</span> QCPDialog::<span class="name">updatePaperSizeModel</span>(const <span class="type">char</span> *<i> name</i>, <span class="type">char</span> *<i> pwg_name</i>, <span class="type">int</span><i> isDefault</i>)</h3>
 <!-- @@@updatePaperSizeModel -->
+<!-- $$$updateResolutionModel[overload1]$$$updateResolutionModelchar*int -->
+<h3 class="fn" id="updateResolutionModel"><a name="updateResolutionModel"></a><span class="type">void</span> QCPDialog::<span class="name">updateResolutionModel</span>(<span class="type">char</span> *<i> resolution</i>, <span class="type">int</span><i> isDefault</i>)</h3>
+<!-- @@@updateResolutionModel -->
 <!-- $$$updateStartJobsModel[overload1]$$$updateStartJobsModelchar* -->
 <h3 class="fn" id="updateStartJobsModel"><a name="updateStartJobsModel"></a><span class="type">void</span> QCPDialog::<span class="name">updateStartJobsModel</span>(<span class="type">char</span> *<i> startJobOption</i>)</h3>
 <p>Many printers come with a hold option which specifies when the job should start after a user clicked the &quot;Print&quot; button in the UI. This function adds a new <i>startJobOption</i> to the existing model.</p>
