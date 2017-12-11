@@ -35,7 +35,7 @@ class Tabs : public QWidget
 public:
     QQuickItem *rootObject;
     Tabs(QWidget *parent = Q_NULLPTR);
-    ~Tabs() = default;
+    ~Tabs();
     void resize(const QRect &rect);
 
 private:
@@ -48,7 +48,7 @@ class Root : public QWidget
 public:
     QQuickItem *rootObject;
     Root(QWidget *parent = Q_NULLPTR);
-    ~Root() = default;
+    ~Root();
     void resize(const QRect &rect);
 
 private:
@@ -60,14 +60,12 @@ class Preview : public QWidget
     Q_OBJECT
 public:
     Preview(QPrinter *_printer, QString uniqueID, QWidget *parent = Q_NULLPTR);
-    ~Preview() = default;
+    ~Preview();
     void resize(const QRect &rect);
     void setOrientation(const QString &orientation);
     void setPageSize(QString name, qreal width, qreal height, QString unit);
     void setNumCopies(int copies);
     void setCollateCopies(bool enabled);
-    void setPrintRange(QString pageRange);
-    void printfile();
 
 public Q_SLOTS:
     void print(QPrinter *printer);
@@ -91,7 +89,7 @@ class Controls : public QWidget
 public:
     QQuickItem *rootObject;
     Controls(QWidget *parent = Q_NULLPTR);
-    ~Controls() = default;
+    ~Controls();
     void resize(const QRect &rect);
 
 private:

@@ -43,6 +43,19 @@ Tabs::Tabs(QWidget *parent) :
     rootObject = tabs->rootObject();
 }
 
+/*!
+ *  \fn Tabs::~Tabs()
+ *
+ *  Destroys Tabs objects
+ */
+Tabs::~Tabs() = default;
+
+/*!
+ *  \fn void Tabs::resize(const QRect& rect)
+ *
+ *  resize() takes a QRect& \a rect as a parameter and uses it to resize the Tabs objects
+ *  to the same dimensions as the parameter \a rect
+ */
 void Tabs::resize(const QRect &rect)
 {
     QWidget::resize(rect.width(), rect.height());
@@ -70,6 +83,19 @@ Root::Root(QWidget *parent) :
     rootObject = root->rootObject();
 }
 
+/*!
+ *  \fn Root::~Root()
+ *
+ *  Destroys Root objects
+ */
+Root::~Root() = default;
+
+/*!
+ *  \fn void Root::resize(const QRect& rect)
+ *
+ *  resize() takes a QRect& \a rect as a parameter and uses it to resize the Root objects
+ *  to the same dimensions as the parameter \a rect
+ */
 void Root::resize(const QRect &rect)
 {
     QWidget::resize(rect.width(), rect.height());
@@ -83,10 +109,11 @@ void Root::resize(const QRect &rect)
  */
 
 /*!
- *  \fn Preview::Preview(QPrinter *_printer, QWidget *parent)
+ * \fn Preview::Preview(QPrinter *_printer, QString uniqueID, QWidget *parent)
  *
  *  Constructs Preview objects with \a parent as the parent widget and \a _printer as the printer.
  *  The \a _printer is used further to change the job options that get reflected in the preview.
+ *  The \a uniqueID is used a create a pdf file in /tmp/
  */
 Preview::Preview(QPrinter *_printer, QString uniqueID, QWidget *parent) :
     QWidget(parent),
@@ -111,6 +138,19 @@ Preview::Preview(QPrinter *_printer, QString uniqueID, QWidget *parent) :
                      SLOT(print(QPrinter *)));
 }
 
+/*!
+ *  \fn Preview::~Preview()
+ *
+ *  Destroys Preview objects
+ */
+Preview::~Preview() = default;
+
+/*!
+ *  \fn void Preview::resize(const QRect& rect)
+ *
+ *  resize() takes a QRect& \a rect as a parameter and uses it to resize the Preview objects
+ *  to the same dimensions as the parameter \a rect
+ */
 void Preview::resize(const QRect &rect)
 {
     QWidget::resize(rect.width(), rect.height());
@@ -133,6 +173,13 @@ void Preview::print(QPrinter *printer)
     painter.end();
 }
 
+/*!
+ * \fn Preview::setOrientation(const QString &orientation)
+ *
+ *  This function takes a string \a orientation as a parameter and sets the orientation of
+ *  the paper in the Preview accordingly. \a orientation can take two values "potrait" and
+ *  "landscape" which sets the orientation of the preview to potrait and landscape respectively.
+ */
 void Preview::setOrientation(const QString &orientation)
 {
     if (orientation.compare("portrait") == 0)
@@ -144,6 +191,15 @@ void Preview::setOrientation(const QString &orientation)
     preview->updatePreview();
 }
 
+/*!
+ * \fn Preview::setPageSize(QString name, qreal width, qreal height, QString unit)
+ *
+ * This function sets the size of the preview to height \a height and width \a width where \a unit
+ * indicates the unit in which the page's size is specified. \a unit can take two values: "mm" and
+ * "in" which indicate that the size is measured in millimeters and inches respectively. If \a name
+ * is null then the standard localized name will be used. If a custom page size then a custom  name
+ * in the format "Custom (width x height)" will be created.
+ */
 void Preview::setPageSize(QString name, qreal width, qreal height, QString unit)
 {
     QPageSize::Unit pageSizeUnit = QPageSize::Unit::Inch;
@@ -162,26 +218,28 @@ void Preview::setPageSize(QString name, qreal width, qreal height, QString unit)
     preview->updatePreview();
 }
 
+/*!
+ * \fn Preview::setNumCopies(int copies)
+ *
+ *  This function takes an integer \a copies as a parameter and sets the number of copies of the
+ *  project to be printed to \a copies.
+ */
 void Preview::setNumCopies(int copies)
 {
     printer->setNumCopies(copies);
     preview->updatePreview();
 }
 
+/*!
+ * \fn Preview::setCollateCopies(bool enabled)
+ *
+ *  This function takes a boolean \a enabled as a parameter. A value of '1' makes the printing in
+ *  collated order whereas a value of '0' keeps the papers uncollated.
+ */
 void Preview::setCollateCopies(bool enabled)
 {
     printer->setCollateCopies(enabled);
     preview->updatePreview();
-}
-
-void Preview::setPrintRange(QString pageRange)
-{
-    Q_UNUSED(pageRange);
-}
-
-void Preview::printfile()
-{
-    //painter.end();
 }
 
 /*!
@@ -251,6 +309,19 @@ Controls::Controls(QWidget *parent) :
     rootObject = controls->rootObject();
 }
 
+/*!
+ *  \fn Controls::~Controls()
+ *
+ *  Destroys Controls objects
+ */
+Controls::~Controls() = default;
+
+/*!
+ *  \fn void Controls::resize(const QRect& rect)
+ *
+ *  resize() takes a QRect& \a rect as a parameter and uses it to resize the Controls objects
+ *  to the same dimensions as the parameter \a rect
+ */
 void Controls::resize(const QRect &rect)
 {
     QWidget::resize(rect.width(), rect.height());

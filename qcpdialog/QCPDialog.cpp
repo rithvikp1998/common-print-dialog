@@ -193,6 +193,19 @@ QCPDialog::QCPDialog(QPrinter *printer, QWidget *parent) :
     init_backend();
 }
 
+/*!
+ *  \fn QCPDialog::~QCPDialog()
+ *
+ *  Destroys QCPDialog objects
+ */
+QCPDialog::~QCPDialog() = default;
+
+/*!
+ *  \fn void QCPDialog::resizeEvent(QResizeEvent* event)
+ *
+ *  This function overrides the resizeEvent function from QMainWindow and resizes all the child
+ *  widgets to match the size of the resized layout items when \a event occurs.
+ */
 void QCPDialog::resizeEvent(QResizeEvent *event)
 {
     event->accept();
@@ -395,6 +408,11 @@ void QCPDialog::remotePrintersToggled(const QString &enabled)
     enabled.compare("true") == 0 ? unhide_remote_cups_printers(f) : hide_remote_cups_printers(f);
 }
 
+/*!
+ *  \fn void QCPDialog::orientationChanged(const QString &orientation)
+ *
+ *  Sets the orientation setting of the printer to \a orientation.
+ */
 void QCPDialog::orientationChanged(const QString &orientation)
 {
     preview->setOrientation(orientation);
@@ -403,6 +421,11 @@ void QCPDialog::orientationChanged(const QString &orientation)
                            orientation.toLatin1().data());
 }
 
+/*!
+ *  \fn void QCPDialog::newPageSizeSelected(const QString &pageSize)
+ *
+ *  Sets the page size setting of the printer to \a pageSize.
+ */
 void QCPDialog::newPageSizeSelected(const QString &pageSize)
 {
     QStringList pageSizeSplitList = pageSize.split("_");
@@ -422,6 +445,11 @@ void QCPDialog::newPageSizeSelected(const QString &pageSize)
                            pageSize.toLatin1().data());
 }
 
+/*!
+ *  \fn void QCPDialog::numCopiesChanged(const int copies)
+ *
+ *  Sets the number-of-copies setting of the printer to \a copies.
+ */
 void QCPDialog::numCopiesChanged(const int copies)
 {
     preview->setNumCopies(copies);
@@ -430,11 +458,22 @@ void QCPDialog::numCopiesChanged(const int copies)
                            QString::number(copies).toLatin1().data());
 }
 
+/*!
+ *  \fn void QCPDialog::collateToggled(const QString &enabled)
+ *
+ *  When \a enabled is set to "true", the output is collated and if \a enabled is not set to "true",
+ *  the output is not collated.
+ */
 void QCPDialog::collateToggled(const QString &enabled)
 {
     preview->setCollateCopies(enabled.compare("true") == 0);
 }
 
+/*!
+ *  \fn void QCPDialog::newPageRangeSet(const QString &pageRange)
+ *
+ *  Prints the pages that lie in the range \a pageRange
+ */
 void QCPDialog::newPageRangeSet(const QString &pageRange)
 {
     QString page(pageRange);
@@ -443,6 +482,11 @@ void QCPDialog::newPageRangeSet(const QString &pageRange)
                            page.remove('[').remove(']').toLatin1().data());
 }
 
+/*!
+ *  \fn void QCPDialog::setDuplexOption(const QString &duplexOption)
+ *
+ *  Sets the duplex printing setting to \a duplexOption
+ */
 void QCPDialog::setDuplexOption(const QString &duplexOption)
 {
     add_setting_to_printer(p,
@@ -450,6 +494,11 @@ void QCPDialog::setDuplexOption(const QString &duplexOption)
                            duplexOption.toLatin1().data());
 }
 
+/*!
+ *  \fn void QCPDialog::refreshJobs()
+ *
+ *  Refreshes the list of jobs
+ */
 void QCPDialog::refreshJobs()
 {
     Job *job;
@@ -477,6 +526,13 @@ void QCPDialog::refreshJobs()
     }
 }
 
+/*!
+ * \fn QCPDialog::cancelJob(const QString &printer, const QString &backend_name,
+ *                          const QString &jobID)
+ *
+ *  Given printer name \a printer, backend name \a backend_name, job id \a jobID, this function
+ *  cancels the corresponding job.
+ */
 void QCPDialog::cancelJob(const QString &printer,
                           const QString &backend_name,
                           const QString &jobID)
@@ -496,6 +552,12 @@ void QCPDialog::cancelJob(const QString &printer,
     refreshJobs();
 }
 
+/*!
+ * \fn QCPDialog::newResolutionSelected(const QString &resolution)
+ *
+ *  When a user selects a resolution from the UI, this function adds the printer resolution setting
+ *  to \a resolution.
+ */
 void QCPDialog::newResolutionSelected(const QString &resolution)
 {
     add_setting_to_printer(p,
@@ -553,10 +615,10 @@ void QCPDialog::clearStartJobsModel()
 }
 
 /*!
- *  \fn void QCPDialog::updatePaperSizeModel(char *media, int isDefault)
+ * \fn void QCPDialog::updatePaperSizeModel(const char *name, char *pwg_name, int isDefault)
  *
- *  Adds a new paper defined by \a media to the existing model paperSizeModel. The \a isDefault
- *  parameter checks if the given media is to be set as the default for the printer.
+ *  Adds a new paper defined by \a name and \a pwg_name to the existing model paperSizeModel.
+ *  The \a isDefault parameter checks if the given media is to be set as the default for the printer.
  */
 void QCPDialog::updatePaperSizeModel(const char *name, char *pwg_name, int isDefault)
 {
@@ -586,6 +648,12 @@ void QCPDialog::clearPaperSizeModel()
         qDebug() << "generalObject Not Found";
 }
 
+/*!
+ *  \fn void QCPDialog::updatePagesPerSideModel(char *pages, int isDefault)
+ *
+ *  This function adds \a pages to the pagesPerSizeModel. The \a isDefault parameter checks if the
+ *  given \a pages value is to be set as the default for the printer.
+ */
 void QCPDialog::updatePagesPerSideModel(char *pages, int isDefault)
 {
     QObject *obj = root->rootObject->findChild<QObject *>("pageSetupObject");
@@ -598,6 +666,12 @@ void QCPDialog::updatePagesPerSideModel(char *pages, int isDefault)
         qDebug() << "pageSetupObject Not Found";
 }
 
+/*!
+ *  \fn void QCPDialog::clearPagesPerSideModel()
+ *
+ *  This function clears the model pagesPerSideModel which holds a list of printer-supported
+ *  pages-per-side options.
+ */
 void QCPDialog::clearPagesPerSideModel()
 {
     QObject *obj = root->rootObject->findChild<QObject *>("pageSetupObject");
@@ -607,6 +681,11 @@ void QCPDialog::clearPagesPerSideModel()
         qDebug() << "pageSetupObject Not Found";
 }
 
+/*!
+ * \fn QCPDialog::enableTwoSided(char *option)
+ *
+ *  This function sets the printer setting that handles two-sided printing to \a option.
+ */
 void QCPDialog::enableTwoSided(char *option)
 {
     QObject *obj = root->rootObject->findChild<QObject *>("pageSetupObject");
@@ -618,6 +697,11 @@ void QCPDialog::enableTwoSided(char *option)
         qDebug() << "pageSetupObject Not Found";
 }
 
+/*!
+ * \fn QCPDialog::clearTwoSidedSwitch()
+ *
+ *  This function clears the printer setting that handles two-sided printing.
+ */
 void QCPDialog::clearTwoSidedSwitch()
 {
     QObject *obj = root->rootObject->findChild<QObject *>("pageSetupObject");
@@ -627,6 +711,12 @@ void QCPDialog::clearTwoSidedSwitch()
         qDebug() << "pageSetupObject Not Found";
 }
 
+/*!
+ * \fn void QCPDialog::updateResolutionModel(char *resolution, int isDefault)
+ *
+ *  This function adds \a resolution to the resolutionModel. The \a isDefault parameter checks if the
+ *  given \a resolution value is to be set as the default for the printer.
+ */
 void QCPDialog::updateResolutionModel(char *resolution, int isDefault)
 {
     QObject *obj = root->rootObject->findChild<QObject *>("advancedObject");
@@ -639,6 +729,12 @@ void QCPDialog::updateResolutionModel(char *resolution, int isDefault)
         qDebug() << "advancedObject Not Found";
 }
 
+/*!
+ *  \fn void QCPDialog::clearResolutionModel()
+ *
+ *  This function clears the model resolutionModel which holds a list of printer-supported
+ *  resolution options.
+ */
 void QCPDialog::clearResolutionModel()
 {
     QObject *obj = root->rootObject->findChild<QObject *>("advancedObject");
@@ -646,6 +742,16 @@ void QCPDialog::clearResolutionModel()
         QMetaObject::invokeMethod(obj, "clearResolutionModel");
     else
         qDebug() << "advancedObject Not Found";
+}
+
+/*!
+ * \fn int QCPDialog::exec()
+ *
+ *  Overrides dialog exec event
+ */
+int QCPDialog::exec()
+{
+    return QDialog::exec();
 }
 
 /*!
@@ -684,9 +790,15 @@ void QCPDialog::cancelButtonClicked()
     reject();   // QDialog::reject()
 }
 
+/*!
+ * \fn void QCPDialog::printButtonClicked()
+ *
+ *  This function acts as a slot for the signal printButtonClicked emitted from the
+ *  Controls.qml file. The signal is emitted when the user clicks on the "Print" Button
+ *  in the sidebar.
+ */
 void QCPDialog::printButtonClicked()
 {
-    ;
     QString pickleFileName(uniqueID);
     pickleFileName.prepend("/tmp/");
     pickleFileName.append(".pickle");
